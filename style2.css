@@ -1,0 +1,136 @@
+/*** Slider ***/
+
+@media screen and (max-width: 750px){
+	.slider {
+		height: 300px;
+	}
+	.arrow-container{
+		height: 300px;
+	}
+}
+
+@media screen and (max-width: 600px){
+	.slider {
+		height: 250px;
+	}
+	.arrow-container{
+		height: 250px;
+	}
+}
+
+@media screen and (max-width: 460px){
+	#logo {
+		height: 40px;
+	}
+}
+
+@media screen and (max-width: 400px){
+	.slider {
+		height: 200px;
+	}
+	.arrow-container{
+		height: 200px;
+	}
+	#register{
+		font-size: 1.2em;
+	}
+}
+
+@media screen and (max-width: 300px){
+	.slider {
+		height: 150px;
+	}
+	.arrow-container{
+		height: 150px;
+	}
+}
+
+/*******Section 2*******/
+
+@media screen and (max-width: 950px){
+	.text{
+		font-size: 1em;
+	}
+}
+
+@media screen and (max-width: 800px){
+	.text{
+		font-size: 0.9em;
+	}
+}
+@media screen and (max-width: 750px){
+	.text{
+		width: 100%;
+		margin: 20px 0;
+		padding-top: 0;
+	}
+	.form-container{
+		width: 60%;
+		float: none;
+		margin-left: calc(20% - 25px);
+	}
+}
+@media screen and (max-width: 450px){
+	input{
+		font-size: 1em;
+	}
+	::-webkit-input-placeholder {
+		font-size: 1em;
+	}
+	.form-container{
+		width: 80%;
+		margin-left: 0;
+	}	
+}
+@media screen and (max-width: 350px){
+	#section2{
+		margin: 20px;
+	}
+	.form-container{
+		width: 100%;
+	}
+}
+
+/****** Result ******/
+
+@media screen and (max-width: 850px){
+	#result_con button{
+		font-size: 1.2em;
+		width: auto;
+		padding: 5px 10px;
+	}
+	#result_con h2{
+		font-size: 30px;
+	}
+	#result_con div{
+		padding: 20px;
+	}
+}
+
+@media screen and (max-width: 500px){
+	#result_con button{
+		padding: 2.5px 5px;
+		right: 15px;
+		bottom: 15px;
+	}
+	#result_con h2{
+		font-size: 20px;
+	}
+	#result_con div{
+		height: 150px;
+	}
+}
+
+@media screen and (max-width: 350px){
+	#result_con button{
+		padding: 2.5px 5px;
+		right: 15px;
+		bottom: 15px;
+	}
+	#result_con h2{
+		font-size: 20px;
+	}
+	#result_con div{
+		width: 70%;
+	}
+}

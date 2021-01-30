@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+          body{
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+          }
+        </style>
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i" rel="stylesheet">
+      </head>
+    <body>
+        <canvas id="myCanvas" style="border: 1px solid black"></canvas>
+
+        <script>
+
+            function rand(a, b){
+                return a + Math.random()*(b-a);
+            }
+
+            let Canvas = document.getElementById('myCanvas');
+            Canvas.width = window.innerWidth;
+            Canvas.height = window.innerHeight;
+            let fontSize = setFontSize();
+            console.log(setFontSize());
+
+
+            let ctx = Canvas.getContext('2d');
+
+            function Ball(x,y,r,vx,vy,color){
+              this.x = x;
+              this.y = y;
+              this.r = r;
+              this.vx = vx;
+              this.vy = vy;
+              this.color = color;
+              this.update = function(){
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.vy+=0.2;
+              };
+              this.lifeTime = 0;
+              this.endTime  = parseInt(rand(20,40));
+            }
+
+
+            let smallBalls = [];
+            let balls = [];
+            let vx = -Math.sqrt(2*2+rand(-500, 100));
+            let vy = -14;
+            let start = {x: Canvas.width/2, y: Canvas.height+10};
+
+            let counter = 0;
+            let loop = setInterval(function(){
+
+                ctx.fillStyle = 'rgba(0,0,0,0.3)';
+                ctx.fillRect(0,0,Canvas.width,Canvas.height);
+                let color = "rgb(" + parseInt(Math.random()*255) + "," +  parseInt(Math.random()*255) + "," +  parseInt(Math.random()*255) + ")";
+                let ball = new Ball(start.x, start.y, rand(3,5), vx, vy, color);
+                vx = rand(-4, 4);
+
+                if (counter < 75){
+                    balls.push(ball);
+                    counter++;
+                }
+
+
+
+                for(let i=0;i<balls.length;i++){
+
+                    if (balls[i].vy >= 0){
+                        ctx.fillRect(0,0,Canvas.width,Canvas.height);
+                        generateSmallBalls(balls[i].x, balls[i].y, balls[i].color);
+                        balls.splice(i--,1);
+                    }
+                    else{
+                        ctx.beginPath();
+                        ctx.arc(balls[i].x,balls[i].y,balls[i].r,0,2*Math.PI);
+                        ctx.fillStyle = balls[i].color;
+                        ctx.strokeStyle = balls[i].color;
+                        ctx.fill();
+                        ctx.stroke();
+
+                        balls[i].update();
+                    }
+
+                }
+
+                for(let i=0;i<smallBalls.length;i++){
+                    ctx.beginPath();
+                    ctx.arc(smallBalls[i].x,smallBalls[i].y,smallBalls[i].r,0,2*Math.PI);
+                    ctx.fillStyle = smallBalls[i].color;
+                    ctx.strokeStyle = smallBalls[i].color;
+                    ctx.fill();
+                    ctx.stroke();
+
+                    smallBalls[i].update();
+                    smallBalls[i].lifeTime++;
+                    if (smallBalls[i].lifeTime == smallBalls[i].endTime){
+                        smallBalls.splice(i--,1);
+                    }
+                }
+                if (balls.length == 0 && smallBalls.length == 0){
+                  clearInterval(loop);
+                  setTimeout(function(){
+                    ctx.font = fontSize + "px 'Playfair Display', serif";
+                    console.log(fontSize);
+                    ctx.fillStyle = "gold";
+                    ctx.textAlign = "center";
+                    ctx.fillText("Eng Break's Opening '18 ", Canvas.width/2, Canvas.height/3);
+                  }, 300);
+
+                }
+
+            }, 25);
+
+            let vxSmall, vySmall, Color;
+            function generateSmallBalls(x, y, color){
+                for(let i=0; i<75; ++i){
+                    vxSmall = rand(-5,5);
+                    vySmall = rand(-5,5);
+                    let smallBall = new Ball(x, y,rand(1,2), vxSmall, vySmall, color);
+                    smallBalls.push(smallBall);
+                }
+            }
+
+            window.onresize = function(){
+              Canvas.width = window.innerWidth;
+              Canvas.height = window.innerHeight;
+              start = {x: Canvas.width/2, y: Canvas.height+10};
+              fontSize = setFontSize();
+            }
+
+            function setFontSize(){
+                return Canvas.width/10 -20;
+            }
+
+
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE>
+<html>
+
+<head>
+	<title>Eng Break'18 Opening</title>
+	<meta charset="utf-8">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Eng Break"/>
+	<meta property="og:title" content="Eng Break'18 Opening"/>
+	
+	<meta property="og:description" content="“Small causes can have larger effects.” Since Large-scale changes is very difficult to make happen all at once, we believe that every little idea, change or an initiative in our community will lead to larger chances, developments and achievements.">
+
+	<meta property="og:image" content="http://engbreak.org/Opening'18/imgs/Final-cover.webp"/>
+	<meta property="og:url" content="http://engbreak.org/Opening'18/">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style2.css">
+	<noscript>
+		<link rel="stylesheet" type="text/css" href="noscript.css">
+	</noscript>
+	<script src="jquery.min.js"></script>
+</head>
+
+<body>
+	<a id="logo_link" href="#"><img src="imgs/logo.png" id="logo"></a>
+	<div id="fireworks" class="noscript">
+		<canvas id="myCanvas"></canvas>
+	</div>
+	<div id="all">
+		<div class="slider">
+			<ul class="slides">
+				<li class="slide"><img src="imgs/cover-for-web.webp"></li>
+				<li class="slide"><img src="imgs/academic3.png"></li>
+				<li class="slide"><img src="imgs/Competetion3.png"></li>
+				<li class="slide"><img src="imgs/Event-Project3.png"></li>
+			</ul>
+			<div class="noscript arrow-container">
+				<img src="imgs/new-arrow.png" id="next-arrow" onclick="getNextSlide()">
+				<img src="imgs/new-arrow.png" id="prev-arrow" onclick="getPrevSlide()">
+			</div>
+		</div>
+
+		<div class="center">
+			<a id="register" href="#section2">Register</a>
+		</div>
+
+		<section id="section2">
+			<div class="text">
+				<h2>“Small causes can have larger effects.”</h2>
+				<p>Since Large-scale changes is very difficult to make happen all at once, we believe that every little idea, change or an initiative in our community will lead to larger chances, developments and achievements.</p>
+			</div>
+			<div class="form-container">
+				<form method="POST" action="result.php" onsubmit="return validateForm()">
+					<div class="input-container">
+						<input type="text" name="name" placeholder="Name" onkeyup="validateName()" required></input>
+						<img src="imgs/error-icon.png" class="error-msg-img" id="error-message-1">
+					</div>
+					<div class="input-container">
+						<input type="text" name="phone" placeholder="Phone" onkeyup="validateNumber()" required></input>
+						<img src="imgs/error-icon.png" class="error-msg-img" id="error-message-2">
+					</div>
+					<div class="input-container">
+						<input type="email" name="email" placeholder="E-mail" onkeyup="validateEmail()" required></input>
+						<img src="imgs/error-icon.png" class="error-msg-img" id="error-message-3">
+					</div>
+					<div class="input-container">
+						<input type="text" name="university" placeholder="University" onkeyup="validateUni()" required></input>
+						<img src="imgs/error-icon.png" class="error-msg-img" id="error-message-4">
+					</div>
+					<div class="input-container">
+						<input type="text" name="collage" placeholder="Faculty" onkeyup="validateFaculty()" required></input>
+						<img src="imgs/error-icon.png" class="error-msg-img" id="error-message-5">
+					</div>
+					<input type="submit" value="Submit"></input>
+				</form>
+			</div>
+		</section>
+		<div class="clear"></div>
+		<a class="noscript" href="javascript:scrollToTop();"><img src="imgs/list_right_arrow.png" id="top-arrow">
+		</a>
+		<div class="clear"></div>
+	</div>
+	<div class="noscript" id="result_con">
+		<div>
+			<h2 id="result"></h2>
+			<button onclick="hideResult()">Cancel</button>
+		</div>
+	</div>
+</body>
+<script src="main.js"></script>
+<script src="action.js"></script>
+<script src="fireworks/fireworks.js"></script>
+
+</html>
